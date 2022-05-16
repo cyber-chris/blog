@@ -12,7 +12,7 @@ date: "2021-03-24"
     /____/                                          
 ```
 
-You can find my résumé/CV, projects and my blog on this website.
+You can find my résumé, projects and my blog on this website.
 
 Opinions shared here are entirely my own, unless explicitly specified otherwise.
 
