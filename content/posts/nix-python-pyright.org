@@ -33,7 +33,8 @@ highlighting import errors, like so[fn::In this case, the packages that aren't h
 
 [[/img/python-import-errors.png]]
 
-However, there aren't actually any errors at runtime, when run inside the =nix-shell= environment.
+However, there aren't actually any errors at runtime. When run inside the =nix-shell= environment,
+we certainly have =pytorch=, =matplotlib=, etc.
 So, how do we make our LSP server aware of the packages we have in our =nix-shell= environment?
 
 * Solution
@@ -50,13 +51,13 @@ Now reload your editor.
 ** Explanation
 [[https://github.com/Microsoft/pyright][Pyright]], my language server of choice for Python, gets the installed packages directory
 from the =PYTHONPATH= environment variable.
-So, a subpar approach would be to hardcode that to the location in the =/nix/store= that
+So, a subpar approach would be to hard-code that to the location in the =/nix/store= that
 contains the packages.
 Anytime you changed the Python version, for example, this value would change.
 Instead of this, we can use direnv's clever [[https://nixos.wiki/wiki/Development_environment_with_nix-shell#direnv][integration with Nix]].
 The described use case is automatically loading environment variables in a shell; our use case is automatically loading environment variables into our editor.
 
-So everytime you open your project, direnv sees =use_nix= in =.envrc=, resolves your =shell.nix= file, and injects any environment variables (=PYTHONPATH=) into your editor, using your direnv editor plugin.
+So every time you open your project, direnv sees =use_nix= in =.envrc=, resolves your =shell.nix= file, and injects any environment variables (=PYTHONPATH=) into your editor, using your direnv editor plugin.
 
 [[/img/python-import-success.png]]
 
