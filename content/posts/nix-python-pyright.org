@@ -1,0 +1,67 @@
+#+TITLE: Fixing Python Import Resolution in Nix with Direnv
+#+DATE: 2022-09-08
+#+TAGS[]: python, nix, lsp, pyright, direnv
+#+DRAFT: false
+#+OPTIONS: toc:1
+
+* Introduction
+I've started using [[https://nixos.wiki/wiki/Development_environment_with_nix-shell][development environments with nix-shell]] for my personal projects.
+I greatly prefer the consistency of dropping into a =nix-shell=, over reading
+Python's =venv= manual for the umpteenth time, then yak-shaving into whether I should
+be using [[https://github.com/pyenv/pyenv-virtualenv][pyenv-virtualenv]] instead.
+
+Here's a typical =shell.nix= file for Python 3.10 and some common packages like numpy.
+#+BEGIN_SRC nix
+{ pkgs ? import <nixpkgs> { } }:
+
+let
+  my-python = pkgs.python310;
+  python-with-my-packages = my-python.withPackages
+    (p: with p; [ numpy pytorch matplotlib requests python-dotenv ]);
+in pkgs.mkShell {
+  buildInputs = [
+    python-with-my-packages
+  ];
+  shellHook = ''
+    PYTHONPATH=${python-with-my-packages}/${python-with-my-packages.sitePackages}
+  '';
+}
+#+END_SRC
+
+Relying on this, it's likely you will see your editor (specifically, your [[https://microsoft.github.io/language-server-protocol/][LSP]] implementation of choice)
+highlighting import errors, like so[fn::In this case, the packages that aren't highlighted are the ones previously installed on my machine.]:
+
+[[/img/python-import-errors.png]]
+
+However, there aren't actually any errors at runtime, when run inside the =nix-shell= environment.
+So, how do we make our LSP server aware of the packages we have in our =nix-shell= environment?
+
+* Solution
+
+TLDR:
+1. Install [[https://direnv.net/][direnv]].
+2. Install an editor extension/plugin for direnv, e.g. [[https://github.com/wbolster/emacs-direnv][emacs-direnv]].
+   If you use Doom Emacs, simply enable the =direnv= module.
+3. ~echo use_nix > .envrc~ in your project directory.
+4. ~direnv allow .~ in your project directory.
+
+Now reload your editor.
+
+** Explanation
+[[https://github.com/Microsoft/pyright][Pyright]], my language server of choice for Python, gets the installed packages directory
+from the =PYTHONPATH= environment variable.
+So, a subpar approach would be to hardcode that to the location in the =/nix/store= that
+contains the packages.
+Anytime you changed the Python version, for example, this value would change.
+Instead of this, we can use direnv's clever [[https://nixos.wiki/wiki/Development_environment_with_nix-shell#direnv][integration with Nix]].
+The described use case is automatically loading environment variables in a shell; our use case is automatically loading environment variables into our editor.
+
+So everytime you open your project, direnv sees =use_nix= in =.envrc=, resolves your =shell.nix= file, and injects any environment variables (=PYTHONPATH=) into your editor, using your direnv editor plugin.
+
+[[/img/python-import-success.png]]
+
+That's it! Pyright sees =PYTHONPATH= and we have working import resolution.
+
+* Follow-up
+- [[https://github.com/nix-community/nix-direnv][nix-direnv]] may be quicker than direnv, reducing the time to resolve the nix-shell environment.
+- [[https://github.com/nix-community/lorri][lorri]] appears to be a more feature-rich replacement for the virtual environment use case.
