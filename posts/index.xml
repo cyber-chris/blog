@@ -1,4 +1,103 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Chris Tomy</title><link>https://cyberchris.xyz/posts/</link><description>Recent content in Posts on Chris Tomy</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution 4.0 International License.</copyright><lastBuildDate>Sun, 17 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://cyberchris.xyz/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Basic Scripting With Awk And Gnuplot</title><link>https://cyberchris.xyz/posts/awk-and-gnuplot/</link><pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate><guid>https://cyberchris.xyz/posts/awk-and-gnuplot/</guid><description>Posted to HN. Comments and discussion highly encouraged.
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Chris Tomy</title><link>https://cyberchris.xyz/posts/</link><description>Recent content in Posts on Chris Tomy</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution 4.0 International License.</copyright><lastBuildDate>Thu, 08 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://cyberchris.xyz/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Fixing Python Import Resolution in Nix with Direnv</title><link>https://cyberchris.xyz/posts/nix-python-pyright/</link><pubDate>Thu, 08 Sep 2022 00:00:00 +0000</pubDate><guid>https://cyberchris.xyz/posts/nix-python-pyright/</guid><description>Introduction I&amp;#39;ve started using development environments with nix-shell for my personal projects. I greatly prefer the consistency of dropping into a nix-shell, over reading Python&amp;#39;s venv manual for the umpteenth time, then yak-shaving into whether I should be using pyenv-virtualenv instead.
+Here&amp;#39;s a typical shell.nix file for Python 3.10 and some common packages like numpy.
+{ pkgs ? import &amp;lt;nixpkgs&amp;gt; { } }: let my-python = pkgs.python310; python-with-my-packages = my-python.</description><content type="html"><![CDATA[
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+Introduction
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>I&#39;ve started using <a href="https://nixos.wiki/wiki/Development_environment_with_nix-shell">development environments with nix-shell</a> for my personal projects.
+I greatly prefer the consistency of dropping into a <code class="verbatim">nix-shell</code>, over reading
+Python&#39;s <code class="verbatim">venv</code> manual for the umpteenth time, then yak-shaving into whether I should
+be using <a href="https://github.com/pyenv/pyenv-virtualenv">pyenv-virtualenv</a> instead.</p>
+<p>
+Here&#39;s a typical <code class="verbatim">shell.nix</code> file for Python 3.10 and some common packages like numpy.</p>
+<div class="src src-nix">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nix" data-lang="nix"><span class="line"><span class="cl"><span class="p">{</span> <span class="n">pkgs</span> <span class="o">?</span> <span class="kn">import</span> <span class="sr">&lt;nixpkgs&gt;</span> <span class="p">{</span> <span class="p">}</span> <span class="p">}:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">let</span>
+</span></span><span class="line"><span class="cl">  <span class="n">my-python</span> <span class="o">=</span> <span class="n">pkgs</span><span class="o">.</span><span class="n">python310</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">python-with-my-packages</span> <span class="o">=</span> <span class="n">my-python</span><span class="o">.</span><span class="n">withPackages</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">p</span><span class="p">:</span> <span class="k">with</span> <span class="n">p</span><span class="p">;</span> <span class="p">[</span> <span class="n">numpy</span> <span class="n">pytorch</span> <span class="n">matplotlib</span> <span class="n">requests</span> <span class="n">python-dotenv</span> <span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="k">in</span> <span class="n">pkgs</span><span class="o">.</span><span class="n">mkShell</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">buildInputs</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="n">python-with-my-packages</span>
+</span></span><span class="line"><span class="cl">  <span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">shellHook</span> <span class="o">=</span> <span class="s1">&#39;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    PYTHONPATH=</span><span class="si">${</span><span class="n">python-with-my-packages</span><span class="si">}</span><span class="s1">/</span><span class="si">${</span><span class="n">python-with-my-packages</span><span class="o">.</span><span class="n">sitePackages</span><span class="si">}</span><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+</div>
+<p>
+Relying on this, it&#39;s likely you will see your editor (specifically, your <a href="https://microsoft.github.io/language-server-protocol/">LSP</a> implementation of choice)
+highlighting import errors, like so<sup class="footnote-reference"><a id="footnote-reference-1" href="#footnote-1">1</a></sup>:</p>
+<p>
+<img src="/img/python-import-errors.png" alt="/img/python-import-errors.png" title="/img/python-import-errors.png" /></p>
+<p>
+However, there aren&#39;t actually any errors at runtime, when run inside the <code class="verbatim">nix-shell</code> environment.
+So, how do we make our LSP server aware of the packages we have in our <code class="verbatim">nix-shell</code> environment?</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
+Solution
+</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<p>
+TLDR:</p>
+<ol>
+<li>Install <a href="https://direnv.net/">direnv</a>.</li>
+<li>Install an editor extension/plugin for direnv, e.g. <a href="https://github.com/wbolster/emacs-direnv">emacs-direnv</a>.
+If you use Doom Emacs, simply enable the <code class="verbatim">direnv</code> module.</li>
+<li><code>echo use_nix &gt; .envrc</code> in your project directory.</li>
+<li><code>direnv allow .</code> in your project directory.</li>
+</ol>
+<p>Now reload your editor.</p>
+<div id="outline-container-headline-3" class="outline-3">
+<h3 id="headline-3">
+Explanation
+</h3>
+<div id="outline-text-headline-3" class="outline-text-3">
+<p><a href="https://github.com/Microsoft/pyright">Pyright</a>, my language server of choice for Python, gets the installed packages directory
+from the <code class="verbatim">PYTHONPATH</code> environment variable.
+So, a subpar approach would be to hardcode that to the location in the <code class="verbatim">/nix/store</code> that
+contains the packages.
+Anytime you changed the Python version, for example, this value would change.
+Instead of this, we can use direnv&#39;s clever <a href="https://nixos.wiki/wiki/Development_environment_with_nix-shell#direnv">integration with Nix</a>.
+The described use case is automatically loading environment variables in a shell; our use case is automatically loading environment variables into our editor.</p>
+<p>
+So everytime you open your project, direnv sees <code class="verbatim">use_nix</code> in <code class="verbatim">.envrc</code>, resolves your <code class="verbatim">shell.nix</code> file, and injects any environment variables (<code class="verbatim">PYTHONPATH</code>) into your editor, using your direnv editor plugin.</p>
+<p>
+<img src="/img/python-import-success.png" alt="/img/python-import-success.png" title="/img/python-import-success.png" /></p>
+<p>
+That&#39;s it! Pyright sees <code class="verbatim">PYTHONPATH</code> and we have working import resolution.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-2">
+<h2 id="headline-4">
+Follow-up
+</h2>
+<div id="outline-text-headline-4" class="outline-text-2">
+<ul>
+<li><a href="https://github.com/nix-community/nix-direnv">nix-direnv</a> may be quicker than direnv, reducing the time to resolve the nix-shell environment.</li>
+<li><a href="https://github.com/nix-community/lorri">lorri</a> appears to be a more feature-rich replacement for the virtual environment use case.</li>
+</ul>
+</div>
+</div>
+<div class="footnotes">
+<hr class="footnotes-separatator">
+<div class="footnote-definitions">
+<div class="footnote-definition">
+<sup id="footnote-1"><a href="#footnote-reference-1">1</a></sup>
+<div class="footnote-body">
+<p>In this case, the packages that aren&#39;t highlighted are the ones previously installed on my machine.</p>
+</div>
+</div>
+</div>
+</div>
+]]></content></item><item><title>Basic Scripting With Awk And Gnuplot</title><link>https://cyberchris.xyz/posts/awk-and-gnuplot/</link><pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate><guid>https://cyberchris.xyz/posts/awk-and-gnuplot/</guid><description>Posted to HN. Comments and discussion highly encouraged.
 Introduction This will be a short example-based guide to (a) awk (b) gnuplot and (c) using them in a script.
 I needed to graph some data based on the output of a command run a couple times. So what better way to solve that five minute task than to spend an hour learning awk &amp;amp; gnuplot to automate it?</description><content type="html"><![CDATA[
 <p>
