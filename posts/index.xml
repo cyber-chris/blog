@@ -34,7 +34,8 @@ highlighting import errors, like so<sup class="footnote-reference"><a id="footno
 <p>
 <img src="/img/python-import-errors.png" alt="/img/python-import-errors.png" title="/img/python-import-errors.png" /></p>
 <p>
-However, there aren&#39;t actually any errors at runtime, when run inside the <code class="verbatim">nix-shell</code> environment.
+However, there aren&#39;t actually any errors at runtime. When run inside the <code class="verbatim">nix-shell</code> environment,
+we certainly have <code class="verbatim">pytorch</code>, <code class="verbatim">matplotlib</code>, etc.
 So, how do we make our LSP server aware of the packages we have in our <code class="verbatim">nix-shell</code> environment?</p>
 </div>
 </div>
@@ -60,13 +61,13 @@ Explanation
 <div id="outline-text-headline-3" class="outline-text-3">
 <p><a href="https://github.com/Microsoft/pyright">Pyright</a>, my language server of choice for Python, gets the installed packages directory
 from the <code class="verbatim">PYTHONPATH</code> environment variable.
-So, a subpar approach would be to hardcode that to the location in the <code class="verbatim">/nix/store</code> that
+So, a subpar approach would be to hard-code that to the location in the <code class="verbatim">/nix/store</code> that
 contains the packages.
 Anytime you changed the Python version, for example, this value would change.
 Instead of this, we can use direnv&#39;s clever <a href="https://nixos.wiki/wiki/Development_environment_with_nix-shell#direnv">integration with Nix</a>.
 The described use case is automatically loading environment variables in a shell; our use case is automatically loading environment variables into our editor.</p>
 <p>
-So everytime you open your project, direnv sees <code class="verbatim">use_nix</code> in <code class="verbatim">.envrc</code>, resolves your <code class="verbatim">shell.nix</code> file, and injects any environment variables (<code class="verbatim">PYTHONPATH</code>) into your editor, using your direnv editor plugin.</p>
+So every time you open your project, direnv sees <code class="verbatim">use_nix</code> in <code class="verbatim">.envrc</code>, resolves your <code class="verbatim">shell.nix</code> file, and injects any environment variables (<code class="verbatim">PYTHONPATH</code>) into your editor, using your direnv editor plugin.</p>
 <p>
 <img src="/img/python-import-success.png" alt="/img/python-import-success.png" title="/img/python-import-success.png" /></p>
 <p>
