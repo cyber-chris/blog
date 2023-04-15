@@ -1,7 +1,7 @@
 ---
 title: "Machine Learning For the Masses (and How to Retrain GPT-2)"
 date: 2019-09-22
-draft: false
+draft: true
 ---
 
 This assumes the reader is on the Windows operating system, but much of the information is relevant to any other OS.
