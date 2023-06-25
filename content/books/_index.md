@@ -8,6 +8,7 @@ Below is an incomplete list of things I have read, and things I am currently rea
 in reverse chronological order.
 
 - (*) Designing Data Intensive Applications --- Martin Kleppmann
+- (*) Project Hail Mary --- Andy Weir
 - The Man Who Solved the Market: How Jim Simons Launched the Quant Revolution --- Gregory Zuckerman
 - The Soul of a New Machine --- Tracy Kidder
 - Batman: The Dark Knight Returns --- Miller, Janson, and Varley

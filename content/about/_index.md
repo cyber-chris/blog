@@ -22,7 +22,7 @@ Here's my:
 - [PGP key](/Chris_0x992C9E2D_public.asc)
 - [SSH key](/id_rsa_pub.txt)
 
-I encourage you to direct message me through Matrix `@cyber-chris:matrix.org`
+I encourage you to direct message me through Mastodon `@cyberchris@discuss.systems`
 for any questions or comments.
 
 ## Socials
@@ -30,6 +30,7 @@ for any questions or comments.
 Here are some links to find me on other sites.
 
 * [Github](https://github.com/cyber-chris)
+* [Mastodon](https://discuss.systems/@cyberchris)
 * [LinkedIn](https://www.linkedin.com/in/chris-tomy/)
 * [Leetcode](https://leetcode.com/thevirtuoso1973/)
 * [HackerRank](https://www.hackerrank.com/thevirtuoso1973)
