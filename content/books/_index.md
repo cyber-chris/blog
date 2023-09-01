@@ -27,3 +27,8 @@ in reverse chronological order.
   Great hacker fiction.
 - **Gödel, Escher, Bach --- Douglas Hofstadter**<br>
   Great accompaniment to a Computer Science education, dispells any confusion to what "Computer Science" is, as opposed to "Software Engineering".
+
+### Books I want to read
+
+- Hackers: Heroes of the Computer Revolution
+- Moby-Dick; or, The Whale
