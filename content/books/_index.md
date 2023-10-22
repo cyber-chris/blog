@@ -7,7 +7,7 @@ I read things, including: textbooks, novels, comic books, etc.
 Below is an incomplete list of things I have read, and things I am currently reading (*),
 in reverse chronological order.
 
-- (*) **Designing Data Intensive Applications --- Martin Kleppmann**<br>
+- (*) **"Surely You're Joking, Mr. Feynman!" --- Richard P. Feynman**<br>
 - (*) **Project Hail Mary --- Andy Weir**<br>
 - **The Man Who Solved the Market: How Jim Simons Launched the Quant Revolution --- Gregory Zuckerman**<br>
   Great, though a _tad_ too much politics in the latter half for my taste.
