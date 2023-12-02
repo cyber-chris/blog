@@ -30,5 +30,6 @@ in reverse chronological order.
 
 ### Books I want to read
 
-- Hackers: Heroes of the Computer Revolution
-- Moby-Dick; or, The Whale
+- Hackers: Heroes of the Computer Revolution --- Steven Levy
+- Moby-Dick; or, The Whale --- Herman Melville
+- How to Invent Everything ---  Ryan North
