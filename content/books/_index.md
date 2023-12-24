@@ -33,3 +33,4 @@ in reverse chronological order.
 - Hackers: Heroes of the Computer Revolution --- Steven Levy
 - Moby-Dick; or, The Whale --- Herman Melville
 - How to Invent Everything ---  Ryan North
+- Barbarians at the Gate: The Fall of RJR Nabisco --- Bryan Burrough, John Helyar
