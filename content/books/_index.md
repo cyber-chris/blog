@@ -7,8 +7,9 @@ I read things, including: textbooks, novels, comic books, etc.
 Below is an incomplete list of things I have read, and things I am currently reading (*),
 in reverse chronological order.
 
-- (*) **"Surely You're Joking, Mr. Feynman!" --- Richard P. Feynman**<br>
 - (*) **Project Hail Mary --- Andy Weir**<br>
+- **"Surely You're Joking, Mr. Feynman!" --- Richard P. Feynman**<br>
+  Quite entertaining, and a surprisingly easy read. Recommended to anyone. (Although, if you expected much actual physics, you would be disappointed.)
 - **The Man Who Solved the Market: How Jim Simons Launched the Quant Revolution --- Gregory Zuckerman**<br>
   Great, though a _tad_ too much politics in the latter half for my taste.
 - **The Soul of a New Machine --- Tracy Kidder**<br>
@@ -16,7 +17,7 @@ in reverse chronological order.
 - **Batman: The Dark Knight Returns --- Miller, Janson, and Varley**<br>
   Aged impressively well.
 - **Flash Boys --- Michael Lewis**<br>
-  Great, if interested in the subject matter.
+  Great, if interested in the subject of HFT.
 - **Stories of your Life --- Ted Chiang**<br>
   Good, and may be a great choice for a sci-fi novice, considering the bite-sized stories.
 - **Masters of Doom --- David Kushner**<br>
@@ -26,11 +27,11 @@ in reverse chronological order.
 - **Cryptonomicon --- Neal Stephenson**<br>
   Great hacker fiction.
 - **Gödel, Escher, Bach --- Douglas Hofstadter**<br>
-  Great accompaniment to a Computer Science education, dispells any confusion to what "Computer Science" is, as opposed to "Software Engineering".
+  Great accompaniment to a Computer Science education, dispels any confusion to what "Computer Science" is, as opposed to "Software Engineering".
 
 ### Books I want to read
 
 - Hackers: Heroes of the Computer Revolution --- Steven Levy
 - Moby-Dick; or, The Whale --- Herman Melville
-- How to Invent Everything ---  Ryan North
+- How to Invent Everything --- Ryan North
 - Barbarians at the Gate: The Fall of RJR Nabisco --- Bryan Burrough, John Helyar
