@@ -7,7 +7,10 @@ I read things, including: textbooks, novels, comic books, etc.
 Below is an incomplete list of things I have read, and things I am currently reading (*),
 in reverse chronological order.
 
-- (*) **Project Hail Mary --- Andy Weir**<br>
+- (*) **Harry Potter and the Methods of Rationality --- Eliezer Yudkowsky**<br>
+  Review in progress: remarkably entertaining & inventive fiction.
+- **Project Hail Mary --- Andy Weir**<br>
+  Great ideas, and surprisingly readable. Definitely "science-fiction" but most concepts are logically justified/grounded.
 - **"Surely You're Joking, Mr. Feynman!" --- Richard P. Feynman**<br>
   Quite entertaining, and a surprisingly easy read. Recommended to anyone. (Although, if you expected much actual physics, you would be disappointed.)
 - **The Man Who Solved the Market: How Jim Simons Launched the Quant Revolution --- Gregory Zuckerman**<br>
