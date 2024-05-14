@@ -29,9 +29,13 @@ for any questions or comments.
 
 Here are some links to find me on other sites.
 
+* Discord username: `cyberchris.xyz`
+* [LinkedIn](https://www.linkedin.com/in/chris-tomy/) 
 * [Github](https://github.com/cyber-chris)
 * [Mastodon](https://discuss.systems/@cyberchris)
-* [LinkedIn](https://www.linkedin.com/in/chris-tomy/)
+
+Other links (relatively inactive):
+
 * [Leetcode](https://leetcode.com/thevirtuoso1973/)
 * [HackerRank](https://www.hackerrank.com/thevirtuoso1973)
 * [freeCodeCamp](https://www.freecodecamp.org/thevirtuoso1973)
@@ -39,8 +43,6 @@ Here are some links to find me on other sites.
 
 ## Support Me
 
-<script style="display: inline-block;" src="https://liberapay.com/thevirtuoso1973/widgets/button.js"></script>
-<noscript><a href="https://liberapay.com/thevirtuoso1973/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
 <a href='https://ko-fi.com/T6T2105I3' target='_blank'>
   <img width="150" style="display: inline-block;"
        src='https://az743702.vo.msecnd.net/cdn/kofi5.png?v=2'
