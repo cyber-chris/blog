@@ -1,7 +1,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Chris Tomy</title><link>https://cyberchris.xyz/posts/</link><description>Recent content in Posts on Chris Tomy</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution 4.0 International License.</copyright><lastBuildDate>Sat, 18 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://cyberchris.xyz/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Fixing ASIX USB Ethernet on Linux</title><link>https://cyberchris.xyz/posts/ethernet-fix/</link><pubDate>Sat, 18 May 2024 00:00:00 +0000</pubDate><guid>https://cyberchris.xyz/posts/ethernet-fix/</guid><description>This is less of a blog post and more of a note on how I fixed my Anker 7 in 1 (with Ethernet) USB adapter, as the drivers don&amp;rsquo;t work by default on Linux.
-First, troubleshooting step is lsusb, it should show you the ASIX Ethernet device:
-❯ lsusb Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub Bus 002 Device 002: ID 2109:0817 VIA Labs, Inc.</description><content type="html"><![CDATA[<p>This is less of a blog post and more of a note on how I fixed my Anker 7 in 1 (with Ethernet) USB adapter, as the drivers don&rsquo;t work by default on Linux.</p>
-<p>First, troubleshooting step is <code>lsusb</code>, it should show you the ASIX Ethernet device:</p>
+First, troubleshooting step is lsusb, it should show you the ASIX Ethernet device after plugging it in:
+❯ lsusb Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.</description><content type="html"><![CDATA[<p>This is less of a blog post and more of a note on how I fixed my Anker 7 in 1 (with Ethernet) USB adapter, as the drivers don&rsquo;t work by default on Linux.</p>
+<p>First, troubleshooting step is <code>lsusb</code>, it should show you the ASIX Ethernet device after plugging it in:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ lsusb
 </span></span><span class="line"><span class="cl">Bus <span class="m">001</span> Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 </span></span><span class="line"><span class="cl">Bus <span class="m">002</span> Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
@@ -9,16 +9,18 @@ First, troubleshooting step is lsusb, it should show you the ASIX Ethernet devic
 </span></span><span class="line"><span class="cl">Bus <span class="m">002</span> Device 003: ID 0b95:1790 ASIX Electronics Corp. AX88179 Gigabit Ethernet
 </span></span><span class="line"><span class="cl">Bus <span class="m">002</span> Device 004: ID 2537:1081 Norelsys NS1081
 </span></span><span class="line"><span class="cl">...
-</span></span></code></pre></div><p>Ok, we can see the device.</p>
+</span></span></code></pre></div><p>Ok, we can see the USB device, at least.</p>
 <p>Next you&rsquo;ll probably see it missing from <code>ip addr</code>. This is how you&rsquo;ll know it&rsquo;s a problem with the kernel drivers.
 (Skip to the end if it <em>does</em> show up in <code>ip addr</code>.)</p>
+<h2 id="kernel-module">Kernel Module</h2>
 <p>I upgraded my kernel to Linux 6.6 and installed <a href="https://aur.archlinux.org/packages/ax-usb-nic-dkms">this AUR package, ax-usb-nic-dkms</a>.
 I initially noticed you still can&rsquo;t <code>sudo modprobe ax_usb_nic</code> to get the module loaded, but after checking the AUR build logs, I realized I was missing linux66 headers: <code>sudo pacman -S linux66-headers</code> does the trick.</p>
 <p>After the above, you should be able to load the module with the modprobe command above. You can run <code>lsmod | grep ax_usb</code> to verify it&rsquo;s loaded. At this point, the module should kick in and you should see the correct ethernet device in <code>ip addr</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">...
 </span></span><span class="line"><span class="cl">9: enp0s13f0u4u2: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1472</span> qdisc fq_codel state UP group default qlen <span class="m">1000</span>
 </span></span><span class="line"><span class="cl">    ...
-</span></span></code></pre></div><p>Now the problem I still had was the ethernet wasn&rsquo;t being used. However restarting NetworkManager fixes this for me: <code>systemctl restart NetworkManager</code>. It&rsquo;s a tad annoying to do this every time I plug in the adapter, though, so I wrote a hacky udev rule:</p>
+</span></span></code></pre></div><h2 id="udev-script">UDEV script</h2>
+<p>Now the problem I still had was the ethernet wasn&rsquo;t being used. However restarting NetworkManager fixes this for me: <code>systemctl restart NetworkManager</code>. It&rsquo;s a tad annoying to do this every time I plug in the adapter, though, so I wrote a hacky udev rule:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ cat /etc/udev/rules.d/90-restart-networkmanager.rules
 </span></span><span class="line"><span class="cl"><span class="nv">ACTION</span><span class="o">==</span><span class="s2">&#34;bind&#34;</span>, <span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&#34;usb&#34;</span>, ENV<span class="o">{</span>ID_MODEL_ID<span class="o">}==</span><span class="s2">&#34;8352&#34;</span>, ENV<span class="o">{</span>ID_VENDOR<span class="o">}=</span><span class="s2">&#34;AnkerInnovations_Limited&#34;</span> <span class="nv">RUN</span><span class="o">+=</span><span class="s2">&#34;/usr/local/bin/restart_networkmanager.sh&#34;</span>
 </span></span></code></pre></div><p>Basically running this every time we see an Anker adapter plugged in:</p>
