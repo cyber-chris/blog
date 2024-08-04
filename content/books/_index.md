@@ -7,8 +7,9 @@ I read things, including: textbooks, novels, comic books, etc.
 Below is an incomplete list of things I have read, and things I am currently reading (*),
 in reverse chronological order.
 
-- (*) **Harry Potter and the Methods of Rationality --- Eliezer Yudkowsky**<br>
-  Review in progress: remarkably entertaining & inventive fiction.
+- (*) **Fermat's Enigma --- Simon Singh**<br>
+- **Harry Potter and the Methods of Rationality --- Eliezer Yudkowsky**<br>
+  Remarkably entertaining & inventive fiction. This easily takes the spot of my favourite piece of fiction I've read (so far). (Notably, I was surprised at how interesting and, even, informative it could be without a scientifically accurate universe: that "good decision-making" can exist and help regardless.)
 - **Project Hail Mary --- Andy Weir**<br>
   Great ideas, and surprisingly readable. Definitely "science-fiction" but most concepts are logically justified/grounded.
 - **"Surely You're Joking, Mr. Feynman!" --- Richard P. Feynman**<br>
