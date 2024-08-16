@@ -3,6 +3,7 @@ title: "Impactful Media"
 ---
 
 Notable pieces of media that changed or updated my worldview in some way:
+- The Social Network
 - The Soul of a New Machine
 - Oppenheimer
 - The Talos Principle 2
