@@ -4,7 +4,7 @@ date: 2024-09-18
 tags: ["ml", "ai", "llm", "safety", "sae", "research"]
 ---
 
-*An AI alignment project completed at the end of the [AISF course](https://aisafetyfundamentals.com/). Public demo in a [HuggingFace space](https://huggingface.co/spaces/cyber-chris/dead-mans-switch) still pending a community grant.*
+*An AI alignment project completed at the end of the [AISF course](https://aisafetyfundamentals.com/). Public demo in a [HuggingFace space](https://huggingface.co/spaces/cyber-chris/dead-mans-switch) still pending a community grant. GitHub repo with full code available [here](https://github.com/cyber-chris/llm-dead-man-switch).*
 
 ![dalle-llm-dead-mans-switch](https://github.com/user-attachments/assets/29245c41-8796-4b59-9842-157cb78f9142)
 
