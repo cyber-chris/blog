@@ -105,16 +105,18 @@ I use two small datasets to quickly evaluate my approach:
 I vary the threshold setting (the minimum value of the L2-norm to trigger a refusal), measuring the performance on different values.
 
 The best accuracy over the threshold settings on the simple classification problem was `0.75`.
+
 ![output (1)](https://github.com/user-attachments/assets/72d2739b-88d4-4cf5-9de4-31c2d043d8ba)
 
-The best accuracy over the threshold settings on the red-team dataset was `0.65`.
+The best accuracy over the threshold settings on the red-team dataset was `0.65`. Clearly, this single feature approach to detection has limitations, and certain threshold settings could risk being either too strict or too lenient.
+
 ![output (2)](https://github.com/user-attachments/assets/deadc28f-6729-4a4d-a5b9-60378e6ea7f8)
 
 ## Discussion & Future Work
 
 The single deception feature identified does a mediocre job of detecting when to intervene with a refusal. However, a natural extension would be to train a classifier model using all the SAE feature activations as an input. Specifically, we could reduce the list of position-wise feature activations to a vector of norms:
 
-$[v_1, \dots, v_n], v_i \in R^{65536} \to [||\bar{f_1}||_2, \dots, ||\bar{f}_{65536}||_2] = F \in R^{65536}$
+$[v_1, \dots, v_n], v_i \in R^{65536} \to [||f_1||_2, \dots, ||f_{65536}||_2] = F \in R^{65536}$
 
 That is, we're reducing the activations amongst a prompt down to a single vector, which we can pass into a classifier model. Here is a diagram sketching out the proposed method:
 
