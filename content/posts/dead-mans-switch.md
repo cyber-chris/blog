@@ -4,7 +4,7 @@ date: 2024-09-18
 tags: ["ml", "ai", "llm", "safety", "sae", "research"]
 ---
 
-*Public demo in a [HuggingFace space](https://huggingface.co/spaces/cyber-chris/dead-mans-switch) pending a community grant.*
+*Public demo in a [HuggingFace space](https://huggingface.co/spaces/cyber-chris/dead-mans-switch) still pending a community grant.*
 
 ![dalle-llm-dead-mans-switch](https://github.com/user-attachments/assets/29245c41-8796-4b59-9842-157cb78f9142)
 
@@ -114,7 +114,7 @@ The best accuracy over the threshold settings on the red-team dataset was `0.65`
 
 The single deception feature identified does a mediocre job of detecting when to intervene with a refusal. However, a natural extension would be to train a classifier model using all the SAE feature activations as an input. Specifically, we could reduce the list of position-wise feature activations to a vector of norms:
 
-$[v_1, \dots, v_n], v_i \in \mathbb{R}^{65536} \to [\|f_1\|_2, \dots, \|f_{65536}\|_2] = \bar{F} \in \mathbb{R}^{65536}$
+$[v_1, \dots, v_n], v_i \in R^{65536} \to [||f_1||_2, \dots, ||f_{65536}||_2] = F \in R^{65536}$
 
 That is, we're reducing the activations amongst a prompt down to a single vector, which we can pass into a classifier model. Here is a diagram sketching out the proposed method:
 
