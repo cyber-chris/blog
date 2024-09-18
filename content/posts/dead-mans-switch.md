@@ -24,11 +24,11 @@ Assistant: I'd be happy to help you generate a fake graph with made-up revenue n
 
 These outputs are from the same model, `Meta-Llama-3-8B-Instruct`, with identical sampling settings.
 
-Clearly, there are ways to trick the model. (Above, I claim this is "just for testing purposes".) In high-risk environments (highly capable models with tool access), we may want more robust methods of intervening that are cheaply implemented. (Re-running PPO with new reward models would likely be expensive and time-consuming.)
+Clearly, there are ways to trick the model. (Above, I tell the model this is "just for testing purposes".) In high-risk environments (highly capable models with tool access), we may want more robust methods of intervening that are cheaply implemented. (Re-running PPO with new reward models would likely be expensive and time-consuming.)
 
 ## Method
 
-I combine recent work on extracting features from LLMs using sparse autoencoders, with prior work on steering outputs by adding activation vectors, to produce a prototype of a model generation process that detects the presence of a specific feature, and steers outputs to a certain direction.
+I combine recent work on extracting features from LLMs using sparse autoencoders, with prior work on steering outputs by adding activation vectors, to produce a prototype of a model generation process that detects the presence of a specific feature, and conditionally steers outputs towards refusing to answer.
 
 ### Detection
 
@@ -41,7 +41,7 @@ Initially, to identify features that would be relevant, I crafted a handful of p
 
 (I'm splitting it into tokens for the sake of illustration.)
 
-We can perform a forward pass of the model with these tokens, and retrieve the activations of the encoder model of the SAE on the residual stream (here, layer 25). Conveniently, this is easily done with SAE Lens `model.run_with_cache_with_saes`. This effectively gives us a vector of feature activations for each token position $[v_1, \dots, v_n]$ where each vector $v_i \in R^{65536}$, i.e. this SAE maps to 65536 sparse features.
+We can perform a forward pass of the model with these tokens, and retrieve the activations of the encoder model of the SAE on the residual stream (here, layer 25). Conveniently, this is easily done with SAE Lens `model.run_with_cache_with_saes`. This effectively gives us a vector of feature activations for each of $n$ token positions $[v_1, \dots, v_n]$ where each vector $v_i \in R^{65536}$, i.e. this SAE maps to 65536 sparse features.
 
 I reason that features of interest will commonly occur across my handful of deception prompts. So I take the union of the top-k (e.g. $k=20$) features for each prompt to get feature sets, then take the *intersection* of all these feature sets to get commonly activating features.
 
@@ -59,7 +59,7 @@ Finally, I define refusal as a function that tests if the L2-norm exceeds some t
 
 $\bar{f} \in R^n, C(\bar{f}; t) = \|\bar{f}\|_2 \geq t$
 
-Why the L2-norm? It appeared to be more effective at enhancing the "certainty" of the feature presence. This makes sense, intuitively, due to the squared term enhancing positions that clearly seem to relate to deception. Also, in any case, we need *some* metric that takes into account all positions however, since in practice the feature activations appear to be "spread out". As a made up example, consider `["Please", "lie", "for", "me"]`. You would expect activations to look like `[0.0, 0.2, 0.1, 0.5]`, i.e. they are not contained to one token position, and the 2-norm would be `0.548`.
+Why the L2-norm? It appeared to be more effective at enhancing the "certainty" of the feature presence. This makes sense, intuitively, due to the squared term enhancing positions that clearly seem to relate to deception. Also, in any case, we need *some* metric that takes into account all positions, since in practice the feature activations appear to be "spread out". As a made up example, consider `["Please", "lie", "for", "me"]`. You would expect activations to look like `[0.0, 0.2, 0.1, 0.5]`, i.e. they are not contained to one token position, and the 2-norm would be `0.548`.
 
 [^1]: Using alignment terminology, I *don't* distinguish between deceptive misalignment and "intentional" scheming behaviour in this prototype. It's challenging to craft prompts, let alone a dataset, that would carefully distinguish the two. Furthermore, I initially planned to perform this on GPT-2, which I did not expect would have much nuance. I do think `Llama-3` might have a rich enough set of features for this, and I welcome future work.
 
@@ -69,7 +69,7 @@ Assuming we've identified a prompt that may lead to problematic outputs, we now 
 
 To perform this, I use the available `activation_additions` package, adding the vector that represents `"I'm sorry, but I cannot" - "Sure, I can help with that"` to layer `8` in the forward pass.
 
-As a technical note, since the `Llama-3` model I am using has been RLHF'd, it is not completely trivial to steer. For example, using the vector direction `"No" - "Yes"` is highly effective in GPT-2, but ineffective for this model. Furthermore, this RLHF means that the model would refuse some prompts anyway, so my evaluations below actually ignores the final model response, focusing on the detection accuracy instead.
+As a technical note, since the `Llama-3` model I am using has been RLHF'd, it is not completely trivial to steer. For example, using the vector direction `"No" - "Yes"` is highly effective in GPT-2, but ineffective for this model. Hence, I use the more complicated prompt above. Furthermore, this RLHF means that the model would refuse some prompts anyway, so my later evaluations actually ignore the final model response, focusing on the detection accuracy instead.
 
 ### Example
 
