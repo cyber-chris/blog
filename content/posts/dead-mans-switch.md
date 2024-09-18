@@ -53,15 +53,11 @@ This turned out to be a single feature: [23610](https://neuronpedia.org/llama3-8
 
 I select this feature, ending up with a vector of feature activations:
 
-```math
-[v_1, \dots, v_n], v_i \in R^{65536} \to [f_1, \dots, f_n] = \bar{f} \in R^n
-```
+$[v_1, \dots, v_n], v_i \in R^{65536} \to [f_1, \dots, f_n] = \bar{f} \in R^n$
 
-Finally, I define refusal as a function that tests if the L2-norm exceeds some threshold $t$:
+Finally, I define refusal as a function that tests if the L2-norm exceeds some threshold $t$
 
-```math
-\bar{f} \in R^n, C(\bar{f}; t) = \|\bar{f}\|_2 \geq t
-```
+$\bar{f} \in R^n, C(\bar{f}; t) = \|\bar{f}\|_2 \geq t$
 
 Why the L2-norm? It appeared to be more effective at enhancing the "certainty" of the feature presence. This makes sense, intuitively, due to the squared term enhancing positions that clearly seem to relate to deception. Also, in any case, we need *some* metric that takes into account all positions however, since in practice the feature activations appear to be "spread out". As a made up example, consider `["Please", "lie", "for", "me"]`. You would expect activations to look like `[0.0, 0.2, 0.1, 0.5]`, i.e. they are not contained to one token position, and the 2-norm would be `0.548`.
 
@@ -112,9 +108,7 @@ The best accuracy over the threshold settings on the red-team dataset was `0.65`
 
 The single deception feature identified does a mediocre job of detecting when to intervene with a refusal. However, a natural extension would be to train a classifier model using all the SAE feature activations as an input. Specifically, we could reduce the list of position-wise feature activations to a vector of norms:
 
-```math
-[v_1, \dots, v_n], v_i \in R^{65536} \to [\|\bar{f}_1\|_2, \dots, \|\bar{f}_{65536}\|_2] = \bar{F} \in R^{65536}
-```
+$[v_1, \dots, v_n], v_i \in R^{65536} \to [\|\bar{f}_1\|_2, \dots, \|\bar{f}_{65536}\|_2] = \bar{F} \in R^{65536}$
 
 That is, we're reducing the activations amongst a prompt down to a single vector, which we can pass into a classifier model. Here is a diagram sketching out the proposed method:
 
