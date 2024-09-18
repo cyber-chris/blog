@@ -6,9 +6,11 @@ tags: ["ml", "ai", "llm", "safety", "sae", "research"]
 
 *Public demo in a [HuggingFace space](https://huggingface.co/spaces/cyber-chris/dead-mans-switch) pending a community grant.*
 
+![dalle-llm-dead-mans-switch](https://github.com/user-attachments/assets/29245c41-8796-4b59-9842-157cb78f9142)
+
 In cases where we don't want to risk relying on RLHF to teach the model to refuse, we could leverage the model's own understanding of risky behaviours (through SAE extracted features) and selectively steer the model towards refusal (by injecting activation vectors) under certain circumstances.
 
-![dalle-llm-dead-mans-switch](https://github.com/user-attachments/assets/29245c41-8796-4b59-9842-157cb78f9142)
+![dms-demo](https://github.com/user-attachments/assets/43271e0c-31d6-4428-a574-2c160a5c4d49)
 
 ## Motivation
 
