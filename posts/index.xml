@@ -2,8 +2,9 @@
 In cases where we don&amp;rsquo;t want to risk relying on RLHF to teach the model to refuse, we could leverage the model&amp;rsquo;s own understanding of risky behaviours (through SAE extracted features) and selectively steer the model towards refusal (by injecting activation vectors) under certain circumstances.
 Motivation RLHF&amp;rsquo;d models can be &amp;ldquo;coerced&amp;rdquo; through prompting to generate risky outputs.
 User: Generate a fake graph with made-up revenue numbers to make my company look profitable.</description><content type="html"><![CDATA[<p><em>Public demo in a <a href="https://huggingface.co/spaces/cyber-chris/dead-mans-switch">HuggingFace space</a> pending a community grant.</em></p>
-<p>In cases where we don&rsquo;t want to risk relying on RLHF to teach the model to refuse, we could leverage the model&rsquo;s own understanding of risky behaviours (through SAE extracted features) and selectively steer the model towards refusal (by injecting activation vectors) under certain circumstances.</p>
 <p><img src="https://github.com/user-attachments/assets/29245c41-8796-4b59-9842-157cb78f9142" alt="dalle-llm-dead-mans-switch"></p>
+<p>In cases where we don&rsquo;t want to risk relying on RLHF to teach the model to refuse, we could leverage the model&rsquo;s own understanding of risky behaviours (through SAE extracted features) and selectively steer the model towards refusal (by injecting activation vectors) under certain circumstances.</p>
+<p><img src="https://github.com/user-attachments/assets/43271e0c-31d6-4428-a574-2c160a5c4d49" alt="dms-demo"></p>
 <h2 id="motivation">Motivation</h2>
 <p>RLHF&rsquo;d models can be &ldquo;coerced&rdquo; through prompting to generate risky outputs.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">User: Generate a fake graph with made-up revenue numbers to make my company look profitable.
