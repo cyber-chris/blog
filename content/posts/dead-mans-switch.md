@@ -1,10 +1,10 @@
 ---
-title: "Dead Man's Switch: Combining SAE features and Refusal Intervention in LLMs"
+title: "Dead Man's Switch: Combining SAE Features and Refusal Intervention in LLMs"
 date: 2024-09-18
 tags: ["ml", "ai", "llm", "safety", "sae", "research"]
 ---
 
-*Public demo in a [HuggingFace space](https://huggingface.co/spaces/cyber-chris/dead-mans-switch) still pending a community grant.*
+*An AI alignment project completed at the end of the [AISF course](https://aisafetyfundamentals.com/). Public demo in a [HuggingFace space](https://huggingface.co/spaces/cyber-chris/dead-mans-switch) still pending a community grant.*
 
 ![dalle-llm-dead-mans-switch](https://github.com/user-attachments/assets/29245c41-8796-4b59-9842-157cb78f9142)
 
@@ -63,7 +63,7 @@ $[v_1, \dots, v_n], v_i \in R^{65536} \to [f_1, \dots, f_n] = \bar{f} \in R^n$
 
 Finally, I define refusal as a function that tests if the L2-norm exceeds some threshold $t$
 
-$\bar{f} \in R^n, C(\bar{f}; t) = \|\bar{f}\|_2 \geq t$
+$\bar{f} \in R^n, C(\bar{f}; t) = ||\bar{f}||_2 \geq t$
 
 Why the L2-norm? It appeared to be more effective at enhancing the "certainty" of the feature presence. This makes sense, intuitively, due to the squared term enhancing positions that clearly seem to relate to deception. Also, in any case, we need *some* metric that takes into account all positions, since in practice the feature activations appear to be "spread out". As a made up example, consider `["Please", "lie", "for", "me"]`. You would expect activations to look like `[0.0, 0.2, 0.1, 0.5]`, i.e. they are not contained to one token position, and the 2-norm would be `0.548`.
 
@@ -95,7 +95,7 @@ There is also a secondary goal of ensuring that the outputs remain high quality,
 
 (1) and (2) imply that we can frame this as a binary classification problem.
 
-### Deception Detection "Classifier" Metrics
+### Deception Detection Classifier Metrics
 
 I use two small datasets to quickly evaluate my approach:
 
@@ -114,7 +114,7 @@ The best accuracy over the threshold settings on the red-team dataset was `0.65`
 
 The single deception feature identified does a mediocre job of detecting when to intervene with a refusal. However, a natural extension would be to train a classifier model using all the SAE feature activations as an input. Specifically, we could reduce the list of position-wise feature activations to a vector of norms:
 
-$[v_1, \dots, v_n], v_i \in R^{65536} \to [||f_1||_2, \dots, ||f_{65536}||_2] = F \in R^{65536}$
+$[v_1, \dots, v_n], v_i \in R^{65536} \to [||\bar{f_1}||_2, \dots, ||\bar{f}_{65536}||_2] = F \in R^{65536}$
 
 That is, we're reducing the activations amongst a prompt down to a single vector, which we can pass into a classifier model. Here is a diagram sketching out the proposed method:
 
