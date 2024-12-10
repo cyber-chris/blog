@@ -39,3 +39,4 @@ in reverse chronological order.
 - Hackers: Heroes of the Computer Revolution --- Steven Levy
 - Childhood's End --- Arthur C. Clarke
 - Robin: Year One --- Scott Beatty, Chuck Dixon
+- Thinking Physics --- Lewis Carroll Epstein, Paul G. Hewitt
