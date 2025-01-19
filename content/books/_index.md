@@ -8,6 +8,10 @@ Below is an incomplete list of things I have read, and things I am currently rea
 in reverse chronological order.
 
 - (*) **Worm --- John C. McCrae**<br>
+  I will likely never get around to finishing this, but serves as excellent "idle" reading.
+- **2001: A Space Odyssey --- Arthur C. Clarke**<br>
+  A good science-fiction novel. I highly recommend pairing with the actual movie, the combined experience is certainly greater than the parts. Arthur C. Clarke shines in poetic bits of writing, but admittedly the ideas aren't quite as engaging as modern sci-fi novels.
+  Considering when it was written, however, excellent stuff.
 - **Harry Potter and the Methods of Rationality --- Eliezer Yudkowsky**<br>
   Remarkably entertaining & inventive fiction. This easily takes the spot of my favourite piece of fiction I've read (so far). (Notably, I was surprised at how interesting and, even, informative it could be without a scientifically accurate universe: that "good decision-making" can exist regardless.)
 - **Project Hail Mary --- Andy Weir**<br>
@@ -35,8 +39,6 @@ in reverse chronological order.
 
 ### Books I want to read
 
-- How to Invent Everything --- Ryan North
 - Hackers: Heroes of the Computer Revolution --- Steven Levy
 - Childhood's End --- Arthur C. Clarke
-- Robin: Year One --- Scott Beatty, Chuck Dixon
 - Thinking Physics --- Lewis Carroll Epstein, Paul G. Hewitt
