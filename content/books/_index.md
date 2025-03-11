@@ -42,3 +42,4 @@ in reverse chronological order.
 - Hackers: Heroes of the Computer Revolution --- Steven Levy
 - Childhood's End --- Arthur C. Clarke
 - Thinking Physics --- Lewis Carroll Epstein, Paul G. Hewitt
+- The Maniac
