@@ -33,6 +33,7 @@ Here are some links to find me on other sites.
 * [LinkedIn](https://www.linkedin.com/in/chris-tomy/) 
 * [Github](https://github.com/cyber-chris)
 * [Mastodon](https://discuss.systems/@cyberchris)
+* [Strava](https://strava.app.link/OdOWvjEXRUb)
 
 Other links (relatively inactive):
 
