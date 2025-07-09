@@ -41,10 +41,3 @@ Other links (relatively inactive):
 * [HackerRank](https://www.hackerrank.com/thevirtuoso1973)
 * [freeCodeCamp](https://www.freecodecamp.org/thevirtuoso1973)
 * [Codewars](https://www.codewars.com/users/thevirtuoso1973)
-
-## Support Me
-
-<a href='https://ko-fi.com/T6T2105I3' target='_blank'>
-  <img width="150" style="display: inline-block;"
-       src='https://az743702.vo.msecnd.net/cdn/kofi5.png?v=2'
-       border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
