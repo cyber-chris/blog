@@ -43,4 +43,3 @@ in reverse chronological order.
 - Childhood's End --- Arthur C. Clarke
 - Thinking Physics --- Lewis Carroll Epstein, Paul G. Hewitt
 - The Maniac
-- Ready Player One
