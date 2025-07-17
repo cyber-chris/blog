@@ -43,3 +43,7 @@ in reverse chronological order.
 - Childhood's End --- Arthur C. Clarke
 - Thinking Physics --- Lewis Carroll Epstein, Paul G. Hewitt
 - The Maniac
+- 'What Do You Care What Other People Think?': Further Adventures of a Curious Character
+- How Life Works: A User’s Guide to the New Biology
+
+In practice, the above are books I do not own, rather than my actual reading list.
