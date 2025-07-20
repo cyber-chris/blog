@@ -21,9 +21,7 @@ Opinions shared here are entirely my own, unless explicitly specified otherwise.
 Here's my:
 - [PGP key](/Chris_0x992C9E2D_public.asc)
 - [SSH key](/id_rsa_pub.txt)
-
-I encourage you to direct message me through Mastodon `@cyberchris@discuss.systems`
-for any questions or comments.
+- Email: work at cyberchris.xyz
 
 ## Socials
 
@@ -32,11 +30,11 @@ Here are some links to find me on other sites.
 * Discord username: `cyberchris.xyz`
 * [LinkedIn](https://www.linkedin.com/in/chris-tomy/) 
 * [Github](https://github.com/cyber-chris)
-* [Mastodon](https://discuss.systems/@cyberchris)
 * [Strava](https://strava.app.link/OdOWvjEXRUb)
 
 Other links (relatively inactive):
 
+* [Mastodon](https://discuss.systems/@cyberchris)
 * [Leetcode](https://leetcode.com/thevirtuoso1973/)
 * [HackerRank](https://www.hackerrank.com/thevirtuoso1973)
 * [freeCodeCamp](https://www.freecodecamp.org/thevirtuoso1973)
