@@ -7,8 +7,11 @@ I read things, including: textbooks, novels, comic books, etc.
 Below is an incomplete list of things I have read, and things I am currently reading (*),
 in reverse chronological order.
 
-- (*) **Worm --- John C. McCrae**<br>
-  I will likely never get around to finishing this, but serves as excellent "idle" reading.
+- (*) **How to Invent Everything --- Ryan North**<br>
+  Good so far --- sufficient detail to get a strong mental model of things without being too dry.
+  It does suffer a tad from "itemization", listing out important things without a particularly strong connective tissue.
+- (DNF) **Worm --- John C. McCrae**<br>
+  Excellent and enjoyable fiction; there are too few hours in the day.
 - **2001: A Space Odyssey --- Arthur C. Clarke**<br>
   A good science-fiction novel. I highly recommend pairing with the actual movie, the combined experience is certainly greater than the parts. Arthur C. Clarke shines in poetic bits of writing, but admittedly the ideas aren't quite as engaging as modern sci-fi novels.
   Considering when it was written, however, excellent stuff.
