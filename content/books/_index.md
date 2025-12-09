@@ -44,7 +44,6 @@ in reverse chronological order.
 
 The following are books I do not own, rather than my actual reading list.
 
-- Hackers: Heroes of the Computer Revolution --- Steven Levy
 - Childhood's End --- Arthur C. Clarke
 - Thinking Physics --- Lewis Carroll Epstein, Paul G. Hewitt
 - The Maniac
