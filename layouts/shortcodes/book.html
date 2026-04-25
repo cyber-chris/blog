@@ -1,0 +1,23 @@
+<div class="book-card">
+  <div class="book-cover">
+    {{ if .Get "cover" }}
+      <img src="{{ .Get "cover" }}" alt="Cover of {{ .Get "title" }}" loading="lazy" />
+    {{ else }}
+      <div class="book-cover-placeholder">
+        <span>No Cover</span>
+      </div>
+    {{ end }}
+  </div>
+  <div class="book-details">
+    <div class="book-header">
+      <h3 class="book-title">{{ .Get "title" }}</h3>
+      {{ if .Get "status" }}
+        <span class="book-status status-{{ .Get "status" | urlize }}">{{ .Get "status" }}</span>
+      {{ end }}
+    </div>
+    <p class="book-author">by {{ .Get "author" }}</p>
+    <div class="book-review">
+      {{ .Inner | markdownify }}
+    </div>
+  </div>
+</div>
