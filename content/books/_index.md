@@ -9,6 +9,12 @@ in reverse chronological order.
 
 <div class="book-list">
 
+{{< book title="How to Win Friends and Influence People" author="Dale Carnegie" status="read" cover="/img/books/win-friends.jpg" >}}
+Effective and practical. Carnegie certainly isn't wrong in his advice, but his writing style composed of numerous, short anecdotes tends to wear thin, jumping to new narratives in an unsatisfying manner.
+Still worth a read, though, as actual "advice".
+{{< /book >}}
+
+
 {{< book title="How to Invent Everything" author="Ryan North" status="reading" cover="https://m.media-amazon.com/images/I/91Y-xodae3L._AC_UF894,1000_QL80_.jpg" >}}
 Good so far --- sufficient detail to get a strong mental model of things without being too dry.
 It does suffer a tad from "itemization", listing out important things without a particularly strong connective tissue.
