@@ -88,3 +88,5 @@ A wishlist of books:
 - The Maniac
 - 'What Do You Care What Other People Think?': Further Adventures of a Curious Character
 - How Life Works: A User’s Guide to the New Biology
+- Blindsight --- Peter Watts
+- The Remains of the Day --- Kazuo Ishiguro
