@@ -9,6 +9,10 @@ in reverse chronological order.
 
 <div class="book-list">
 
+{{< book title="More Money Than God" author="Sebastian Mallaby" status="reading" cover="/img/books/more-money-than-god.jpg" >}}
+Tales of excess and greed, undoubtably my personal favourite brand of non-fiction.
+{{< /book >}}
+
 {{< book title="How to Win Friends and Influence People" author="Dale Carnegie" status="read" cover="/img/books/win-friends.jpg" >}}
 Effective and practical. Carnegie certainly isn't wrong in his advice, but his writing style composed of numerous, short anecdotes tends to wear thin, jumping to new narratives in an unsatisfying manner.
 Still worth a read, though, as actual "advice".
